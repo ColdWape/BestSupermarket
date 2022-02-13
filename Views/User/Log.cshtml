@@ -1,0 +1,35 @@
+﻿@model BestSupermarket.Models.Login
+<!--banner-->
+<div class="banner-top">
+    <div class="container">
+        <h3>Вход</h3>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<!--login-->
+
+<div class="login">
+
+    <div class="main-agileits">
+        <div class="form-w3agile">
+            <h3>Форма входа</h3>
+            <form asp-action="Log" asp-controller="User" method="post">
+                <div class="key">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <input asp-for="Email" type="text" value="Email" name="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                    <div class="clearfix"></div>
+                </div>
+                <div class="key">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <input asp-for="Password" type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+                    <div class="clearfix"></div>
+                </div>
+                <input type="submit" value="Подтвердить">
+            </form>
+        </div>
+        <div class="forg">
+            <a href="register.html" class="forg-right">Регистрация</a>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

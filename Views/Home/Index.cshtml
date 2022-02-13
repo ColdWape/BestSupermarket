@@ -1,0 +1,65 @@
+﻿@{ViewData["Title"] = "Товары";}
+
+<!--content-->
+<div class="product">
+    <div class="container">
+        <div class="spec ">
+            <h3>Товары</h3>
+            <div class="ser-t">
+                <b></b>
+                <span><i></i></span>
+                <b class="line"></b>
+            </div>
+        </div>
+        @foreach (var item in ViewBag.Products)
+        {
+            <div class="col-md-3 pro-1">
+                <div class="col-m" style="min-height: 455px;">
+                    
+                    <form class="offer-img" asp-action="About" asp-controller="Home">
+                        <input style="display: none" name="productId" value="@item.Id" />
+                        <input type="image" class="img-responsive" name="picture" src="@item.Photo" />
+
+                        @if (item.IsDiscount)
+                        {
+                            <div class="offer"><p><span>Скидка</span></p></div>
+                        }
+                    </form>
+                    <div class="mid-1">
+                        <div class="women">
+                            <h6><a href="single.html">@item.Name </a> (@item.Weight грамм) </h6>
+                        </div>
+                        <div class="mid-2">
+                            @if (item.IsDiscount)
+                            {
+                                <p><label>&#8381;@item.Price</label><em class="item_price">&#8381;@item.NewPrice</em></p>
+                            }
+                            else
+                            {
+                                <p><em class="item_price">&#8381;@item.Price</em></p>
+                            }
+
+                            <div class="clearfix"></div>
+                        </div>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="add">
+                                <button class="btn btn-danger my-cart-btn my-cart-b " data-id="@item.Id" data-name="@item.Name" data-summary="summary @item.Id" data-price="@item.Price" data-quantity="1" data-image="@item.Photo">Добавить в корзину</button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="add">
+                                <button class="noAuth btn btn-danger  my-cart-b">Добавить в корзину</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+
+
+        
+        
+    </div>
+</div>

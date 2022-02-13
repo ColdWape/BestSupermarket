@@ -1,0 +1,135 @@
+﻿@{ViewData["Title"] = "Информация";}
+
+<!--banner-->
+<div class="banner-top">
+    <div class="container">
+        <h3>Подробности</h3>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<div class="single">
+    <div class="container">
+        <div class="single-top-main">
+            <div class="col-md-5 single-top">
+                <div class="single-w3agile">
+
+                    <div id="picture-frame">
+                        <img src="@ViewBag.Info.Photo" data-src="@ViewBag.Info.Photo" alt="" class="img-responsive" />
+                    </div>
+                    <script src="~/js/jquery.zoomtoo.js"></script>
+                    <script>
+                        $(function () {
+                            $("#picture-frame").zoomToo({
+                                magnify: 1
+                            });
+                        });
+                    </script>
+
+
+
+                </div>
+            </div>
+            <div class="col-md-7 single-top-left ">
+                <div class="single-right">
+                    <h3>@ViewBag.Info.Name</h3>
+
+
+                    <div class="pr-single">
+                        @if (@ViewBag.Info.IsDiscount)
+                        {
+                            <p class="reduced "><del>&#8381;@ViewBag.Info.Price</del>&#8381;@ViewBag.Info.NewPrice</p>
+                        }
+                        else
+                        {
+                            <p class="reduced ">&#8381;@ViewBag.Info.Price</p>
+                        }
+
+                    </div>
+
+                    <p class="in-pa">@ViewBag.Info.Description </p>
+
+
+                    <div class="add add-3">
+                        <button class="btn btn-danger my-cart-btn my-cart-b " data-id="@ViewBag.Info.Id" data-name="@ViewBag.Info.Name" data-summary="summary @ViewBag.Info.Id" data-price="@ViewBag.Info.Price" data-quantity="1" data-image="@ViewBag.Info.Photo">Add to Cart</button>
+
+                    </div>
+
+
+
+                    <div class="clearfix"> </div>
+                </div>
+
+
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+
+
+    </div>
+</div>
+<!---->
+<div class="content-top offer-w3agile">
+    <div class="container ">
+        <div class="spec ">
+            <h3>Другие товары</h3>
+            <div class="ser-t">
+                <b></b>
+                <span><i></i></span>
+                <b class="line"></b>
+            </div>
+        </div>
+        <div class="con-w3l wthree-of">
+            @for (int i = 0; i < 4; i++)
+            {
+                Random rand = new Random();
+                int temp = rand.Next(1, 12);
+                @foreach (var item in ViewBag.Products)
+                {
+                    if (item.Id == temp)
+                    {
+                        <div class="col-md-3 pro-1">
+                            <div class="col-m" style="min-height: 455px;">
+
+                                <form class="offer-img" asp-action="About" asp-controller="Home">
+                                    <input style="display: none" name="productId" value="@item.Id" />
+                                    <input type="image" class="img-responsive" name="picture" src="@item.Photo" />
+
+                                    @if (item.IsDiscount)
+                                    {
+                                        <div class="offer"><p><span>Скидка</span></p></div>
+                                    }
+                                </form>
+                                <div class="mid-1">
+                                    <div class="women">
+                                        <h6><a href="single.html">@item.Name </a> (@item.Weight грамм) </h6>
+                                    </div>
+                                    <div class="mid-2">
+                                        @if (item.IsDiscount)
+                                        {
+                                            <p><label>&#8381;@item.Price</label><em class="item_price">&#8381;@item.NewPrice</em></p>
+                                        }
+                                        else
+                                        {
+                                            <p><em class="item_price">&#8381;@item.Price</em></p>
+                                        }
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="add">
+                                        <button class="btn btn-danger my-cart-btn my-cart-b " data-id="1" data-name="Moong" data-summary="summary 1" data-price="1.50" data-quantity="1" data-image="images/of.png">Add to Cart</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+
+
+
+
+
+        </div>
+    </div>
+</div>

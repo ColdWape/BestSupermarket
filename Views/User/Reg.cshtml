@@ -1,0 +1,37 @@
+﻿ @model BestSupermarket.Models.Register
+    <!--banner-->
+<div class="banner-top">
+    <div class="container">
+        <h3>Регистрация</h3>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+
+<!--login-->
+
+<div class="login">
+    <div class="main-agileits">
+        <div class="form-w3agile form1">
+            <h3>Форма регистрации</h3>
+            <form asp-action="Reg" asp-controller="User" method="post">
+                <div class="key">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <input type="text"asp-for="Email" value="Email" name="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                    <div class="clearfix"></div>
+                </div>
+                <div class="key">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <input type="password" asp-for="Password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+                    <div class="clearfix"></div>
+                </div>
+                <div class="key">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <input type="password" asp-for="CheckPassword" value="CheckPassword" name="CheckPassword" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'CheckPassword';}" required="">
+                    <div class="clearfix"></div>
+                </div>
+                <input type="submit" value="Подтвердить">
+            </form>
+        </div>
+
+    </div>
+</div>
